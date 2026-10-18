@@ -1,0 +1,72 @@
+{
+ "name": "durations3",
+ "inputShape": [
+  null,
+  4
+ ],
+ "layers": [
+  {
+   "type": "embedding",
+   "inputDim": 65,
+   "outputDim": 8,
+   "embeddings": {
+    "shape": [
+     65,
+     8
+    ],
+    "offset": 0,
+    "length": 520
+   }
+  },
+  {
+   "type": "lstm",
+   "units": 64,
+   "returnSequences": true,
+   "kernel": {
+    "shape": [
+     8,
+     256
+    ],
+    "offset": 520,
+    "length": 2048
+   },
+   "recurrentKernel": {
+    "shape": [
+     64,
+     256
+    ],
+    "offset": 2568,
+    "length": 16384
+   },
+   "bias": {
+    "shape": [
+     256
+    ],
+    "offset": 18952,
+    "length": 256
+   }
+  },
+  {
+   "type": "dense",
+   "units": 65,
+   "activation": "softmax",
+   "timeDistributed": false,
+   "kernel": {
+    "shape": [
+     64,
+     65
+    ],
+    "offset": 19208,
+    "length": 4160
+   },
+   "bias": {
+    "shape": [
+     65
+    ],
+    "offset": 23368,
+    "length": 65
+   }
+  }
+ ],
+ "weights": "durations3.bin"
+}

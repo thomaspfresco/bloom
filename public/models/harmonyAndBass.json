@@ -1,0 +1,72 @@
+{
+ "name": "harmonyAndBass",
+ "inputShape": [
+  null,
+  3
+ ],
+ "layers": [
+  {
+   "type": "embedding",
+   "inputDim": 8,
+   "outputDim": 8,
+   "embeddings": {
+    "shape": [
+     8,
+     8
+    ],
+    "offset": 0,
+    "length": 64
+   }
+  },
+  {
+   "type": "lstm",
+   "units": 64,
+   "returnSequences": true,
+   "kernel": {
+    "shape": [
+     8,
+     256
+    ],
+    "offset": 64,
+    "length": 2048
+   },
+   "recurrentKernel": {
+    "shape": [
+     64,
+     256
+    ],
+    "offset": 2112,
+    "length": 16384
+   },
+   "bias": {
+    "shape": [
+     256
+    ],
+    "offset": 18496,
+    "length": 256
+   }
+  },
+  {
+   "type": "dense",
+   "units": 8,
+   "activation": "softmax",
+   "timeDistributed": false,
+   "kernel": {
+    "shape": [
+     64,
+     8
+    ],
+    "offset": 18752,
+    "length": 512
+   },
+   "bias": {
+    "shape": [
+     8
+    ],
+    "offset": 19264,
+    "length": 8
+   }
+  }
+ ],
+ "weights": "harmonyAndBass.bin"
+}

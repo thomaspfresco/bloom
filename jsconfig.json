@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "checkJs": true,
+    "allowJs": true,
+    "noEmit": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "types": [],
+    "paths": {
+      "three/addons/OBJLoader.js": [
+        "./node_modules/@types/three/examples/jsm/loaders/OBJLoader.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "public/js/**/*.js",
+    "public/js/types/*.d.ts"
+  ],
+  "exclude": [
+    "public/vendor"
+  ]
+}

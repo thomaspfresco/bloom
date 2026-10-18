@@ -1,0 +1,88 @@
+{
+ "name": "drums1",
+ "inputShape": [
+  null,
+  31,
+  6
+ ],
+ "layers": [
+  {
+   "type": "lstm",
+   "units": 128,
+   "returnSequences": true,
+   "kernel": {
+    "shape": [
+     6,
+     512
+    ],
+    "offset": 0,
+    "length": 3072
+   },
+   "recurrentKernel": {
+    "shape": [
+     128,
+     512
+    ],
+    "offset": 3072,
+    "length": 65536
+   },
+   "bias": {
+    "shape": [
+     512
+    ],
+    "offset": 68608,
+    "length": 512
+   }
+  },
+  {
+   "type": "lstm",
+   "units": 64,
+   "returnSequences": true,
+   "kernel": {
+    "shape": [
+     128,
+     256
+    ],
+    "offset": 69120,
+    "length": 32768
+   },
+   "recurrentKernel": {
+    "shape": [
+     64,
+     256
+    ],
+    "offset": 101888,
+    "length": 16384
+   },
+   "bias": {
+    "shape": [
+     256
+    ],
+    "offset": 118272,
+    "length": 256
+   }
+  },
+  {
+   "type": "dense",
+   "units": 6,
+   "activation": "sigmoid",
+   "timeDistributed": true,
+   "kernel": {
+    "shape": [
+     64,
+     6
+    ],
+    "offset": 118528,
+    "length": 384
+   },
+   "bias": {
+    "shape": [
+     6
+    ],
+    "offset": 118912,
+    "length": 6
+   }
+  }
+ ],
+ "weights": "drums1.bin"
+}

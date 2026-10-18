@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Not found · BLOOM{% endblock %}
+{% block body_class %}page-text{% endblock %}
+{% block styles %}<link rel="stylesheet" href="/css/pages.css?v={{ asset_version }}">{% endblock %}
+{% block content %}
+  <main class="text-page">
+    {% include "partials/nav.html" %}
+    <h1>Nothing here</h1>
+    <p>That page does not exist. <a href="/">Back to BLOOM</a>.</p>
+  </main>
+{% endblock %}

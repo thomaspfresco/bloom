@@ -1,0 +1,7 @@
+tools/
+tests/
+docs/
+.venv/
+node_modules/
+__pycache__/
+*.pyc

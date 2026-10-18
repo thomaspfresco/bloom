@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Import · BLOOM{% endblock %}
+{% block body_class %}page-text{% endblock %}
+{% block styles %}<link rel="stylesheet" href="/css/pages.css?v={{ asset_version }}">{% endblock %}
+{% block content %}
+  <main class="text-page">
+    {% include "partials/nav.html" %}
+    <h1>Import a session</h1>
+    <p>
+      Sessions live in this browser. To move one between computers, download it as a
+      <code>.json</code> file from the BLOOM menu (right-click <strong>BLOOM</strong>, then
+      <em>Download session</em>) and load it here. Sessions saved by the previous version of
+      BLOOM can be imported too.
+    </p>
+    <p class="warn">Importing replaces the session stored in this browser.</p>
+
+    <label class="file-pick">
+      <span>Choose a session file</span>
+      <input id="session-file" type="file" accept="application/json,.json">
+    </label>
+    <p id="import-status" role="status" aria-live="polite"></p>
+  </main>
+{% endblock %}
+{% block scripts %}<script type="module" src="/js/pages/upload.js?v={{ asset_version }}"></script>{% endblock %}

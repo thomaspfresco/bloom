@@ -1,0 +1,19 @@
+{
+  "name": "bloom",
+  "private": true,
+  "type": "module",
+  "description": "BLOOM: generative loop composer. The app itself has no build step; package.json only enables ES-module resolution for the Node test runner.",
+  "scripts": {
+    "test": "node --test \"tests/js/**/*.test.js\"",
+    "typecheck": "tsc -p jsconfig.json",
+    "e2e": "node tests/e2e/smoke.mjs",
+    "build:three": "node tools/build_three.mjs"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "esbuild": "^0.28.2",
+    "playwright-core": "^1.50.0",
+    "three": "^0.186.0",
+    "typescript": "^5.6.0"
+  }
+}

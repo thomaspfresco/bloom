@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}BLOOM{% endblock %}</title>
+  <meta name="description" content="BLOOM, a generative loop composer. Sketch loops, let a small neural network suggest bass, harmony and drums, and arrange them into structures.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+
+  <link rel="preload" href="/fonts/Poppins-Light.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/fonts/Poppins-Medium.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/css/tokens.css?v={{ asset_version }}">
+  <link rel="stylesheet" href="/css/base.css?v={{ asset_version }}">
+  {% block styles %}{% endblock %}
+
+  {# three.js is resolved through this import map to one tree-shaken bundle (npm run build:three); WebGPURenderer falls back to WebGL2 by itself. #}
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/vendor/three/three.bundle.js",
+      "three/webgpu": "/vendor/three/three.bundle.js",
+      "three/tsl": "/vendor/three/three.bundle.js",
+      "three/addons/OBJLoader.js": "/vendor/three/three.bundle.js"
+    }
+  }
+  </script>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  {# Full-viewport WebGPU canvas, fixed behind all HTML. Never receives pointer events. #}
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <div id="app">
+    {% block content %}{% endblock %}
+  </div>
+
+  {# Shown instead of the app below 1200 px wide (CSS only, see base.css). #}
+  <div id="splash" role="alert">
+    <p>BLOOM is made for larger screens.</p>
+    <p class="splash-sub">Please switch to a desktop.</p>
+  </div>
+
+  <noscript><p class="notice">BLOOM needs JavaScript.</p></noscript>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

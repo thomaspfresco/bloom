@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node (tooling and tests only; the app itself has no build step)
+node_modules/
+npm-debug.log*
+
+# Vercel
+.vercel/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# Local env
+.env
+.env.*
+
+# Generated scratch
+*.log
+/tmp/

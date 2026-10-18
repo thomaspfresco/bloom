@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}BLOOM{% endblock %}
+{% block body_class %}page-compose{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="/css/components.css?v={{ asset_version }}">
+  <link rel="stylesheet" href="/css/compose.css?v={{ asset_version }}">
+{% endblock %}
+
+{% block content %}
+  {# Populated by public/js/main.js. The shell exists in HTML so there is no flash of nothing. #}
+  <div id="ui" class="ui" role="application" aria-label="BLOOM composer"></div>
+
+  <div id="desktop-only" class="desktop-only" hidden>
+    <h1>BLOOM</h1>
+    <p>BLOOM needs a larger screen and a keyboard or mouse.</p>
+  </div>
+  <div id="boot" class="boot" aria-live="polite">Loading&hellip;</div>
+{% endblock %}
+
+{% block scripts %}
+  {# Tone.js, three.js and the app load only on screens >= 1200 px wide (see js/gate.js). #}
+  <script type="module" src="/js/gate.js?v={{ asset_version }}"
+          data-classic="/vendor/tone/Tone.js?v={{ asset_version }}" data-entry="/js/pages/compose.js?v={{ asset_version }}"></script>
+{% endblock %}

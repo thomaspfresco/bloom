@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}HELP · BLOOM{% endblock %}
+{% block body_class %}page-text{% endblock %}
+{% block styles %}<link rel="stylesheet" href="/css/pages.css?v={{ asset_version }}">{% endblock %}
+{% block content %}
+  <main class="text-page">
+    {% include "partials/nav.html" %}
+    {% include "partials/help.html" %}
+  </main>
+{% endblock %}

@@ -1,0 +1,94 @@
+/* Shared UI atoms: text buttons, menus, dialogs, toast, busy overlay. */
+
+/* ---- text buttons -------------------------------------------------------- */
+.text-btn {
+  font-size: var(--fs-md);
+  letter-spacing: .03em;
+  opacity: .5;
+  padding: .4em .6em;
+}
+.text-btn:hover, .text-btn:focus-visible { opacity: 1; }
+.text-btn.strong { font-weight: 500; font-size: var(--fs-lg); opacity: .9; }
+.text-btn.danger { color: rgb(var(--danger)); }
+.text-btn:disabled { opacity: .25; cursor: not-allowed; }
+
+/* ---- menus & dialogs: one dark layer (old Menu) ---------------------------------------------- */
+.menu-layer { position: fixed; inset: 0; z-index: 50; }
+.menu-layer.closing { pointer-events: none; }
+.menu-backdrop { position: absolute; inset: 0; background: #000; opacity: 0; transition: opacity 333ms linear; }
+.menu-layer.on .menu-backdrop { opacity: .78; }
+.menu-layer.solid .menu-backdrop { transition-duration: 425ms; }
+.menu-layer.solid.on .menu-backdrop { opacity: 1; }
+.menu-content { position: absolute; inset: 0; }
+
+.menu-list { position: absolute; display: flex; flex-direction: column; width: max-content; }
+.menu-list.up { flex-direction: column-reverse; }
+.menu-item {
+  display: block; height: var(--margin); padding: 0; text-align: left; white-space: nowrap;
+  font-size: calc(100vh / 45); line-height: 1; cursor: pointer;
+  transition: opacity 230ms linear;
+}
+.menu-text { display: block; animation: menu-opa 283ms linear calc(var(--i) * 50ms) both, menu-slide 133ms linear calc(var(--i) * 50ms) both; }
+.menu-list.up .menu-text { animation-name: menu-opa, menu-slide-up; }
+.menu-item.danger { color: rgb(var(--danger)); }
+/* a hovered option lights up and the rest drop to 20% at once; they recover over ~0.23 s */
+.menu-list:hover .menu-item:not(:hover):not(.disabled) { opacity: .2; transition: none; }
+.menu-item.disabled { opacity: .2; cursor: not-allowed; }
+@keyframes menu-opa { from { opacity: 0; } to { opacity: 1; } }
+@keyframes menu-slide { from { transform: translateY(-4vh); } to { transform: none; } }
+@keyframes menu-slide-up { from { transform: translateY(4vh); } to { transform: none; } }
+
+.dialog-text {
+  position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); margin: 0;
+  width: max-content; max-width: 90vw; text-align: center; white-space: pre-line;
+  font-size: 2.5vh; line-height: 1.3; animation: menu-opa 283ms linear both;
+}
+.dialog-text.about { top: 50%; font-size: 2vh; white-space: pre; }
+.dialog-btn { position: absolute; top: 55%; transform: translate(-50%, -50%); white-space: nowrap; opacity: .5; cursor: pointer; animation: menu-opa 283ms linear both; }
+.dialog-btn:hover { opacity: 1; }
+.dialog-btn.cancel { left: calc(50% - 10vh); font-size: 2vh; }
+.dialog-btn.confirm { left: calc(50% + 10vh); font-size: 2.5vh; color: rgb(var(--danger)); }
+
+/* ---- toast ---------------------------------------------------------------- */
+.toast {
+  position: fixed; right: calc(var(--grid-x) * 1.1); top: calc(var(--grid-y) / 2); transform: translateY(-50%);
+  white-space: pre-line; text-align: right; font-weight: 300;
+  font-size: calc(100vh / 68); line-height: 1.2; color: rgb(var(--fg));
+  opacity: 0; transition: opacity 283ms linear; pointer-events: none; z-index: 60;
+}
+.toast.show { opacity: .667; }
+
+/* ---- busy / loading overlay ----------------------------------------------- */
+.busy {
+  position: fixed; inset: 0; z-index: 70; background: #000;
+  display: grid; place-items: center;
+}
+.busy img { height: 20vh; }
+
+/* ---- scroller (value with arrows) ----------------------------------------- */
+.scroller { position: relative; display: flex; align-items: center; width: 10vw; height: 5vh; outline-offset: 0; }
+.scroller-arrows {
+  display: flex; flex-direction: column; width: 2.5vh; height: 100%;
+  opacity: 0; transition: opacity 283ms linear;
+}
+.scroller:hover .scroller-arrows { opacity: 1; }
+.scroller-btn { width: 2.5vh; height: 2.5vh; display: block; opacity: .5; cursor: pointer; }
+.scroller-btn img { width: 100%; height: 100%; display: block; }
+.scroller-btn:hover { opacity: 1; }
+.scroller-btn.off, .scroller-btn.off:hover { opacity: .25; cursor: default; }
+.scroller-text { position: absolute; left: calc(5vw - 10vw / 3.2); top: 0; bottom: 0; display: grid; align-content: center; pointer-events: none; white-space: nowrap; }
+.scroller-value { font-size: var(--fs-lg); line-height: 1.1; }
+.scroller-label { font-size: var(--fs-sm); color: rgb(var(--fg) / .5); line-height: 1.2; }
+
+/* ---- toggle ---------------------------------------------------------------- */
+.toggle {
+  --c: var(--fg); --pulse: var(--fg);
+  position: relative; width: 1vw; height: 1vw; border-radius: 50%;
+  border: 1px solid rgb(var(--fg)); opacity: .333; display: grid; place-items: center;
+}
+.toggle.on { opacity: 1; }
+.toggle i, .toggle b { grid-area: 1 / 1; width: 55.6%; height: 55.6%; border-radius: 50%; background: rgb(var(--c)); display: none; }
+.toggle.on i { display: block; }
+/* the beat flash stays up through the beat's step and fades in ~5 frames afterwards */
+.toggle b { display: block; background: rgb(var(--pulse)); opacity: 0; transition: opacity 83ms linear; }
+.toggle.on.pulse b { opacity: .8; transition: none; }

@@ -1,0 +1,43 @@
+/* Design tokens. The original app sized everything from window height, so the
+   unit here is the viewport height (1vh) and layout proportions are kept. */
+
+@font-face { font-family: "Poppins"; font-weight: 300; font-display: swap; src: url("/fonts/Poppins-Light.ttf") format("truetype"); }
+@font-face { font-family: "Poppins"; font-weight: 500; font-display: swap; src: url("/fonts/Poppins-Medium.ttf") format("truetype"); }
+@font-face { font-family: "Poppins"; font-weight: 700; font-display: swap; src: url("/fonts/Poppins-Bold.ttf") format("truetype"); }
+
+:root {
+  color-scheme: dark;
+
+  /* palette (rgb triplets so alpha can be applied: rgb(var(--fg) / .5)) */
+  --bg: 0 0 0;
+  --fg: 255 245 220;
+  --blue: 0 65 170;      /* BASS */
+  --pink: 220 20 100;    /* DRUMS */
+  --yellow: 250 160 25;  /* HARMONY */
+  --green: 0 160 100;    /* MELODY */
+  --danger: 225 0 0;
+  --record: 255 0 0;
+
+  --font: "Poppins", system-ui, sans-serif;
+
+  /* type scale (fractions of viewport height, as in the original) */
+  --fs-xs: clamp(9px, 1.3vh, 16px);
+  --fs-sm: clamp(10px, 1.54vh, 18px);  /* labels */
+  --fs-md: clamp(12px, 2vh, 24px);     /* body */
+  --fs-lg: clamp(14px, 2.5vh, 30px);   /* tabs, titles */
+
+  /* spacing */
+  --margin: 3.33vh;   /* H/30 */
+  --icon: 6.67vh;     /* H/15, track icon box */
+  --radius: 0.5vh;
+
+  /* grid geometry (see docs/RENDERING.md) */
+  --grid-x: 5vh;
+  --grid-w: calc(100vw - 10vh);
+  --grid-y: 10.2vh;
+  --grid-h: 70.05vh;
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --t-fast: 120ms;
+  --t-med: 260ms;
+}

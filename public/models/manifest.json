@@ -1,0 +1,44 @@
+{
+ "models": [
+  {
+   "name": "brakes",
+   "bytes": 475672
+  },
+  {
+   "name": "drums1",
+   "bytes": 475672
+  },
+  {
+   "name": "drums2",
+   "bytes": 475672
+  },
+  {
+   "name": "drums3",
+   "bytes": 475672
+  },
+  {
+   "name": "drums4",
+   "bytes": 475672
+  },
+  {
+   "name": "durations2",
+   "bytes": 93732
+  },
+  {
+   "name": "durations3",
+   "bytes": 93732
+  },
+  {
+   "name": "durations4",
+   "bytes": 93732
+  },
+  {
+   "name": "durations5",
+   "bytes": 93732
+  },
+  {
+   "name": "harmonyAndBass",
+   "bytes": 77088
+  }
+ ]
+}

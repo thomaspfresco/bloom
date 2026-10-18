@@ -1,0 +1,27 @@
+/* About / Help / Import / 404 */
+body.page-text { overflow: auto; user-select: text; -webkit-user-select: text; }
+body.page-text #app { position: static; }
+body.page-text #scene { opacity: .6; }
+
+.text-page { max-width: 62ch; margin: 0 auto; padding: 6vh 24px 12vh; position: relative; }
+.text-page h1 { font-weight: 500; font-size: clamp(22px, 4vh, 40px); letter-spacing: .04em; }
+.text-page h2 { font-weight: 500; font-size: clamp(15px, 2.4vh, 22px); margin-top: 3em; }
+.text-page p, .text-page li { color: rgb(var(--fg) / .85); line-height: 1.7; }
+.text-page kbd, .text-page code {
+  font-family: ui-monospace, Menlo, monospace; font-size: .85em;
+  padding: .1em .45em; border: 1px solid rgb(var(--fg) / .3); border-radius: 4px;
+}
+.text-page .warn { color: rgb(var(--yellow)); }
+
+.text-nav { display: flex; gap: 2.2em; margin-bottom: 6vh; font-weight: 500; }
+.text-nav a { text-decoration: none; opacity: .55; }
+.text-nav a:hover, .text-nav a:focus-visible { opacity: 1; }
+
+.file-pick {
+  display: inline-block; margin: 1em 0; padding: .9em 1.6em;
+  border: 1px solid rgb(var(--fg) / .4); border-radius: 6px; cursor: pointer;
+}
+.file-pick:hover { border-color: rgb(var(--fg)); }
+.file-pick input { position: absolute; opacity: 0; pointer-events: none; }
+#import-status { min-height: 1.5em; }
+#import-status.error { color: rgb(var(--danger)); }

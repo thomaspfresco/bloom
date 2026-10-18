@@ -1,0 +1,59 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  font-family: var(--font);
+  font-weight: 300;
+  font-size: var(--fs-md);
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The three.js canvas: one full-viewport layer behind all HTML. */
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#app { position: fixed; inset: 0; z-index: 1; }
+
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input { font: inherit; color: inherit; }
+a { color: inherit; }
+
+:focus-visible { outline: none; }
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Narrow screens: a splash asks for a desktop and covers the app. */
+#splash { display: none; }
+@media (max-width: 1199px) {
+  #splash {
+    position: fixed; inset: 0; z-index: 1000; background: rgb(var(--bg));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1vh; padding: 0 24px; text-align: center; font-size: var(--fs-lg);
+  }
+  #splash p { margin: 0; }
+  #splash .splash-sub { font-size: var(--fs-md); color: rgb(var(--fg) / .5); }
+}
